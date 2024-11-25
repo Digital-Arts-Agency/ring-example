@@ -1,0 +1,640 @@
+@import url('https://fonts.googleapis.com/css2?family=Luxurious+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Vidaloka&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Ovo&family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Eagle+Lake&family=Italianno&family=Luxurious+Script&family=Montserrat&family=Open+Sans&family=Vidaloka&display=swap');
+
+body {
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: #5e7b88;
+  font-family: 'Ovo', serif;
+}
+
+#loader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: white;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+#logo {
+  animation: pulse 5s infinite;
+  width: 300px;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.5;
+ 
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+#main-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: relative;
+}
+#canvasContainer {
+  width: 60%;
+  height: 100%;
+  position: relative;
+}
+#mcanvas {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+
+}
+
+#ui{
+  width: 40%;
+}
+
+.ui-header {
+  text-align: left;
+  margin-left: 60px;
+  margin-top: 36px;
+  width: 90%;
+}
+
+.ui-content {
+  text-align: left;
+  margin-top: 30px;
+  width: 100% ;
+}
+
+#line {
+  width: 56px;
+  height: 2px;
+  background: #FFFFFF;
+  margin-top: 0px;
+
+}
+
+h3 {
+  width: 90%;
+  /* margin: 0px auto; */
+  margin-bottom: 0px;
+  margin-top: 15px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 34px;
+  line-height: 34px;
+  font-family: 'Ovo', serif;
+  /* margin-left: 20px; */
+  color: #FFFFFF;;
+
+}
+
+p {
+  margin: 10px auto;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 23px;
+  color: #FFFFFF;
+}
+
+button {
+  padding: 20px;
+  border: none;
+
+}
+#button1{
+  background: linear-gradient(180deg, #FECA8D 0%, #D9B062 125%);
+
+}
+#button1:hover, #button2:hover, #button4:hover , #gem-btn1:hover, #gem-btn2:hover, #gem-btn3:hover, #gem-btn4:hover {
+   transform: scale(1.1);
+   transition: 0.3s ease transform;
+}
+
+#button2 {
+  background: linear-gradient(180deg, #EFEEF4 0%, #A0A4AD 125%);
+}
+
+.choose-metal-type-desc {
+  margin-top: 15px;
+}
+
+#button3 {
+  background: linear-gradient(180deg, #F5CDB1 -23.75%, #E3B4A0 100%);
+}
+#button3:hover{
+  transform: scale(1.1);
+  transition: 0.3s ease transform;
+}
+#button3:hover + #btn-text-3, #button1:hover + #btn-text-1, #button2:hover + #btn-text-2, #button4:hover + #btn-text-4 {
+  color: #006bbb;
+}
+
+#gem-btn1:hover + #btn-gem-1, #gem-btn2:hover + #btn-gem-2, #gem-btn3:hover + #btn-gem-3, #gem-btn4:hover + #btn-gem-4 {
+  color: #006bbb;
+}
+#button4 {
+  background: linear-gradient(180deg, #E8E8E8 -23.75%, #989CA4 100%);
+}
+
+#gem-btn1 {
+  background-color: #FFFFFF;
+ }
+ #gem-btn2 {
+     background: linear-gradient(180deg, #3BADC1 0%, #498992 100%);
+ }
+
+ #gem-btn3 {
+  background: #fe6e9c;
+}
+#gem-btn4 {
+  background: linear-gradient(180deg, #AABD24 0%, #739035 100%);
+}
+
+#rotation-icon svg {
+  
+  position: absolute;
+  z-index: 3;
+  right: 77px;
+  top: 30px;
+
+}
+
+#pause-rotation svg{
+  position: absolute;
+  z-index: 3;
+  right: 46px;
+  top: 30px;  
+  transition: 0.3s ease color;
+}
+
+#resume-rotation svg {
+  position: absolute;
+  z-index: 3;
+  right: 46px;
+  top: 30px; 
+  transition: 0.3s ease color;
+  
+}
+
+#pause-rotation {
+  
+}
+
+#resume-rotation {
+  display: none;
+}
+
+#zoom {
+  position: absolute;
+  bottom: 36px;
+  right: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  overflow: hidden;
+  z-index: 3;
+}
+
+#snapshot {
+  position: absolute;
+  bottom: 36px;
+  right: 134px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  overflow: hidden;
+  z-index: 3;
+}
+
+#snapshot svg {
+ fill: #747680;
+}
+
+#snapshot:hover svg {
+  fill: #006CBB;
+}
+
+#zoom-minus {
+  margin-top: -9px;
+}
+
+.zoom-border-minus:hover svg rect , .zoom-border-plus:hover svg rect  {
+  fill: #006CBB;
+}
+
+.zoom-border-minus {
+  border: 1px solid #747680;
+  padding: 10px;
+  padding-top: 11.5px;
+  padding-bottom: 9.5px;
+  border-top-left-radius: 13px;
+  border-bottom-left-radius: 13px;
+}
+.zoom-border-plus {
+  border: 1px solid #747680;
+  border-left: none;
+  padding: 7px;
+  padding-bottom: 5px;
+  padding-left: 9px;
+  padding-right: 9px;
+  border-top-right-radius: 13px;
+  border-bottom-right-radius: 13px;
+}
+
+.pick-box {
+  margin: 0 auto;
+  position: relative;
+  width: 100%;
+}
+
+.pick-box-container {
+  width: 80%;
+  margin: 0 auto;
+
+}
+
+.btn-container {
+  display: flex;
+  justify-content: start;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.btn-text {
+  text-align: center;
+  width: 100px;
+}
+
+#top-line {
+  height: 0.5px;
+  background: #FFFFFF;
+  width: 100%; 
+}
+
+#bottom-line {
+  height: 0.5px;
+  background: #FFFFFF;;  
+  margin-top: 20px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.btn-container p {
+  margin-left: 0px !important;
+  margin-top: 10px;
+  transition: 0.3s ease color;
+
+}
+
+/* mouse */
+
+
+.mouse{
+  position: absolute;
+  bottom: 25px;
+  left: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  overflow: hidden;
+  z-index: 3;
+}
+
+.mouse-paragraph{
+  margin-left: 10px;
+  color: #2B2C2F;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 23px;
+  border-bottom: 1px solid #2B2C2F;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  transform: translateX(-100%);
+  opacity: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.mouse-icon svg {
+  z-index: 10;
+}
+
+.mouse:hover .mouse-paragraph{
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.white-background {
+  background-color: white;
+}
+
+.mouse:not(:hover) .mouse-paragraph {
+transform: translateX(-100%);
+opacity: 0;
+z-index: 9;
+}
+
+.mouse svg path{
+  opacity: 0.7;
+  transition: 0.3s ease opacity;
+  z-index: 10;
+}
+
+.mouse:hover svg path{
+opacity: 1;
+transition: 0.3s ease opacity;
+z-index: 10;
+}
+
+.mouse-overlay-container{
+  overflow: hidden;
+  position: absolute;
+  height: 100%;
+  z-index: 1;
+}
+
+.mouse-overlay-container.show{
+  z-index: 5;
+}
+
+.mouse-overlay {
+height: 100%;
+background-color: #f6f6f6;
+transition: transform 0.5s ease-in-out, opacity 0.6s ease-in-out;
+transform: translateX(-100%);
+opacity: 0;
+overflow: hidden;
+display: grid;
+align-items: center;
+z-index: 5;
+width: 100%;
+position: absolute;
+}
+
+.mouse-overlay.show {
+transform: translateX(0);
+opacity: 1;
+}
+
+.mouse-overlay.hide{
+transform: translateX(-100%);
+opacity: 0;
+}
+
+
+.mouse-controls{
+  display: flex;
+  flex-direction: column;
+  margin-left: 70px;
+  gap: 35px;
+}
+
+.mouse-row{
+  display: flex;
+  align-items: center;
+  width: fit-content;
+}
+
+.mouse-row p{
+  font-size: 16px;
+  margin-left: 20px;
+  color: #2B2C2F;
+}
+
+.mouse-row h1{
+  margin: 0;
+  margin-bottom: 20px;
+  font-weight: 400;
+  font-size: 34px;
+}
+
+#back-mouse {
+  display: flex;
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  width: fit-content;
+}
+ #back-mouse p{
+  margin-left: 4px !important;
+  font-size: 14px;
+  color: #2B2C2F;
+  transition: 0.3s ease color;
+  margin-top: 0px;
+}
+ #back-mouse svg {
+  margin-top: 6px;;
+}
+
+ #back-mouse:hover p{
+  color:#006CBB;
+}
+
+#back-mouse:hover svg path {
+  fill: #006CBB;
+  transition: 0.3s ease fill;
+}
+
+.max-char {
+  margin-top: -8px;
+  margin-left: 8px;
+  color: #B2C7CC;
+  margin-bottom: 20px;
+}
+.engraving-label {
+  text-align: left;    
+  margin-bottom: 5px;
+}
+
+.remove-engraving {
+  display: flex;
+  width: 38%;
+
+}
+
+#remove-engraving {
+  display: none;
+}
+
+#remove-engraving:hover #remove-engraving-text {
+  color: #FFFFFF;
+
+}
+
+#remove-engraving-text {
+  margin-left: 10px;
+  color: #2B2C2F;
+}
+
+#engraving-text:focus {
+border: 1px solid #2B2C2F !important;
+background: #FFFFFF;
+font-weight: 600;
+}
+
+#remove-engraving:hover  .remove {
+  fill: #FFFFFF;
+}
+#remove {
+  margin-top: 17px;
+}
+#engraving-on {
+  display: block;
+}
+
+#engraving-off {
+  text-align: center;
+  margin-top: 70px;
+  display: none;
+}
+
+#engraving-desc {
+  margin-top: 20px !important;
+}
+
+
+#engraving-text{
+  background: #FFFFFF;
+  border: 1px solid #747680;
+  border-radius: 10px;
+  width: 400px;
+  height: 38px;
+  margin-bottom: 10px;
+  transition: border 0.3s ease;
+}
+
+input {
+  padding-left: 10px;
+}
+
+#font-select {
+  background: #FFFFFF;
+  border: 1px solid #747680;
+  border-radius: 10px;
+  width: 412px;
+  height: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
+  color:#747680;
+  cursor: pointer;
+  transition: border 0.3s ease;
+  appearance: none;
+}
+
+#font-select:hover,
+#engraving-text:hover{
+  border: 1px solid #2B2C2F
+}
+
+.select{
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.select svg{
+  position: absolute;
+  top: 50%;
+  right: 26px;
+  transform: translateY(-50%);
+  width: 10px;
+}
+
+.active-text {
+  color: #006bbb;
+}
+
+.dot-metal, .dot-gem{
+width: 8px;
+height: 8px;
+background: #006CBB;
+border: 1px solid white;
+margin: 0 auto;
+display: none;
+}
+
+.dot-active 
+{
+  display: block;
+}
+
+@media (max-width: 990px) {
+  body {
+    overflow: auto;
+  }
+  #main-container {
+    display: block !important;
+    width: 100%;
+    height: 100%;
+  }
+  #canvasContainer {
+    width: 100%;
+    height: 40%;
+    position: relative;
+  }
+  #ui {
+    width: 100%;
+    height: 60%;
+  }
+  
+    #mouse {
+    display: none;
+  }
+
+  #snapshot {
+    display: none;
+  }
+
+  #zoom {
+    bottom: 10px;
+  }
+    h3 {
+    font-size: 24px;
+    line-height: 24px;
+  }
+
+  .ui-header {
+    margin-left: 20px;
+    margin-top: 36px;
+    margin-right : 20px
+}
+ p {
+  font-size: 12px;
+ }
+ #logo {
+   width: 150px;
+  }
+ #engraving-text {
+   width: 250px;
+ }
+ #font-select {
+   width: 270px;
+ }
+  .pick-box-container {
+    width: 90%;
+}
+}
+

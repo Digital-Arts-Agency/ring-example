@@ -1,0 +1,339 @@
+<!--
+templateType: page
+isAvailableForNewContent: true
+label: Ring Webgi
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Rio Grande Ring Configurator</title>
+    <!-- <link rel="stylesheet" href="{{ get_asset_url('/3D-Ring-Webgi/style.css') }}"> -->
+    <!-- {{ standard_header_includes }} -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="loader">
+        <!-- <img src="{{ get_asset_url('/3D-Ring-Webgi/assets/rio-logo.png') }}" alt="Logo" id="logo"> -->
+        <img src="assets/rio-logo.png" alt="Logo" id="logo">
+
+    </div>
+    <div id="main-container">
+        <!-- start canvas container -->
+        <div id="canvasContainer">
+
+            <!-- rotation -->
+            <div id="rotation">
+                <div id="rotation-icon">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M14.8978 6.30456C14.5768 6.08419 14.1869 5.88109 13.7413 5.70075L13.871 5.65691C14.1163 5.574 14.2479 5.30797 14.1649 5.06272C14.082 4.81741 13.8158 4.68594 13.5708 4.76878L12.0906 5.26922C11.9508 5.3165 11.8414 5.42678 11.7954 5.56694C11.7493 5.70709 11.7719 5.86078 11.8564 5.98172L12.7513 7.26256C12.8425 7.39306 12.9881 7.46287 13.136 7.46287C13.2287 7.46287 13.3223 7.43547 13.4041 7.37834C13.6163 7.23009 13.6681 6.93784 13.5198 6.72563L13.4187 6.58081C13.7873 6.73169 14.1068 6.89856 14.3672 7.07737C14.8156 7.38519 15.0625 7.7145 15.0625 8.00469C15.0625 8.50028 14.3356 9.07194 13.1655 9.49653C12.5591 9.71659 11.8624 9.89297 11.1048 10.0213C11.1687 9.36959 11.2017 8.69131 11.2017 7.99991C11.2017 5.93509 10.9075 3.98703 10.3731 2.51463C10.1028 1.76959 9.78194 1.17769 9.41953 0.755281C9.12391 0.410781 8.63762 0 8 0C7.36238 0 6.87609 0.410781 6.58044 0.755375C6.21803 1.17778 5.89722 1.76969 5.62687 2.51472C5.36116 3.24694 5.15481 4.09678 5.0145 5.02012C4.09331 5.16041 3.24541 5.36647 2.51469 5.63163C1.76966 5.90197 1.17775 6.22281 0.755344 6.58522C0.410781 6.88088 0 7.36713 0 8.00475C0 8.64238 0.410781 9.12866 0.755375 9.42431C1.17778 9.78672 1.76969 10.1075 2.51472 10.3779C3.98713 10.9122 5.93519 11.2065 8 11.2065C8.68937 11.2065 9.36575 11.1737 10.0157 11.1101C9.8875 11.8657 9.71144 12.5605 9.49191 13.1655C9.06725 14.3356 8.49559 15.0625 8 15.0625C7.71506 15.0625 7.38781 14.805 7.07859 14.3375C6.90506 14.0752 6.74234 13.7559 6.59419 13.3893L6.69397 13.4629C6.90228 13.6164 7.19581 13.5721 7.34944 13.3637C7.50303 13.1553 7.45862 12.8619 7.25025 12.7083L5.99256 11.7811C5.87375 11.6936 5.72069 11.6671 5.57947 11.7095C5.43819 11.752 5.32509 11.8586 5.27431 11.9971L4.73641 13.464C4.64728 13.7071 4.77209 13.9764 5.01512 14.0655C5.06837 14.085 5.12284 14.0943 5.17647 14.0943C5.3675 14.0943 5.54697 13.9766 5.61659 13.7868L5.67675 13.6228C6.26569 15.1502 7.08228 16 8 16C8.63762 16 9.12391 15.5892 9.41956 15.2446C9.78197 14.8222 10.1028 14.2303 10.3732 13.4853C10.6379 12.7557 10.8438 11.9092 10.984 10.9896C11.9058 10.8493 12.7542 10.6432 13.4853 10.3779C14.2303 10.1075 14.8223 9.78669 15.2447 9.42428C15.5892 9.12866 16 8.64241 16 8.00475C16 7.57431 15.8088 6.92994 14.8978 6.30456ZM8 10.269C6.04147 10.269 4.207 9.99469 2.8345 9.49659C1.66441 9.07203 0.9375 8.50038 0.9375 8.00475C0.9375 7.50913 1.66441 6.9375 2.8345 6.51291C3.44069 6.29291 4.137 6.11659 4.89431 5.98828C4.831 6.63703 4.79831 7.31203 4.79831 8C4.79831 8.35897 4.80734 8.71972 4.82519 9.07228C4.83825 9.33084 5.05812 9.53094 5.317 9.51675C5.57553 9.50369 5.77456 9.28347 5.76147 9.02494C5.74444 8.68813 5.73581 8.34328 5.73581 8.00003C5.73581 7.2615 5.77481 6.54059 5.85012 5.85547C6.53684 5.77978 7.25956 5.74056 8 5.74056C8.24294 5.74056 8.48775 5.74491 8.72762 5.75344C8.98644 5.76253 9.20353 5.56044 9.21275 5.30169C9.22197 5.043 9.01972 4.82578 8.761 4.81656C8.51006 4.80763 8.254 4.80306 7.99997 4.80306C7.31003 4.80306 6.63309 4.83594 5.98263 4.89962C6.11103 4.14028 6.28762 3.44213 6.50812 2.83453C6.93278 1.66441 7.50441 0.9375 8 0.9375C8.49559 0.9375 9.06725 1.66441 9.49187 2.8345C9.98994 4.207 10.2642 6.04147 10.2642 8C10.2642 8.742 10.2248 9.46619 10.1488 10.1542C9.46244 10.2298 8.74006 10.269 8 10.269Z"
+                            fill="#747680" />
+                    </svg>
+                </div>
+                <div id="pause-rotation">
+                    <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="5" height="16" rx="1" fill="#747680" />
+                        <rect x="9" width="5" height="16" rx="1" fill="#747680" />
+                    </svg>
+
+                </div>
+                <div id="resume-rotation">
+                    <svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M13.992 7.30241L1.192 0.10243C0.943997 -0.0367692 0.641598 -0.0335692 0.396799 0.10883C0.1504 0.25283 0 0.515229 0 0.800028V15.2C0 15.4848 0.1504 15.7472 0.396799 15.8912C0.521598 15.9632 0.660798 16 0.799997 16C0.934397 16 1.0704 15.9664 1.192 15.8976L13.992 8.6976C14.2432 8.5552 14.4 8.28961 14.4 8.00001C14.4 7.71041 14.2432 7.44481 13.992 7.30241Z"
+                            fill="#747680" />
+                    </svg>
+                </div>
+            </div>
+            <!-- end rotation -->
+
+            <!-- zoom -->
+            <div id="zoom">
+                <div id="zoom-border-minus" class="zoom-border-minus">
+                    <div id="zoom-minus">
+                        <svg width="14" height="2" viewBox="0 0 14 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="14" width="2" height="14" rx="1" transform="rotate(90 14 0)" fill="#747680" />
+                        </svg>
+                    </div>
+                </div>
+                <div id="zoom-border-plus" class="zoom-border-plus">
+                    <div id="zoom-plus">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="6" width="2" height="14" rx="1" fill="#747680" />
+                            <rect x="14" y="6" width="2" height="14" rx="1" transform="rotate(90 14 6)"
+                                fill="#747680" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <!-- end zoom -->
+
+            <!-- snapshot -->
+            <div id="snapshot">
+                <svg xmlns="http://www.w3.org/2000/svg" height="2em" viewBox="0 0 448 512">
+                    <path
+                        d="M32 32C14.3 32 0 46.3 0 64v96c0 17.7 14.3 32 32 32s32-14.3 32-32V96h64c17.7 0 32-14.3 32-32s-14.3-32-32-32H32zM64 352c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7 14.3 32 32 32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H64V352zM320 32c-17.7 0-32 14.3-32 32s14.3 32 32 32h64v64c0 17.7 14.3 32 32 32s32-14.3 32-32V64c0-17.7-14.3-32-32-32H320zM448 352c0-17.7-14.3-32-32-32s-32 14.3-32 32v64H320c-17.7 0-32 14.3-32 32s14.3 32 32 32h96c17.7 0 32-14.3 32-32V352z" />
+                </svg>
+            </div>
+            <!-- end snapshot -->
+
+            <!-- mouse controls -->
+            <div id="zoomInfo">
+                <div id="mouse" class="mouse">
+                    <div id="mouse-icon" class="mouse-icon">
+                        <svg width="20" height="33" viewBox="0 0 20 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M7.37936 9.09657C7.37936 7.84045 8.27079 6.78517 9.46948 6.53894V0C4.19312 0.274753 0 4.62422 0 9.94983C0 9.98595 0 12.7359 0 12.7718H7.37936V9.09657Z"
+                                fill="#2B2C2F" />
+                            <path
+                                d="M10.5303 0V6.53894C11.729 6.78493 12.6204 7.84046 12.6204 9.09657V12.7715H19.9998C19.9998 12.7356 19.9998 9.98572 19.9998 9.94959C19.9998 4.62422 15.8064 0.274753 10.5303 0Z"
+                                fill="#2B2C2F" />
+                            <path
+                                d="M10 16.4005C8.5716 16.4005 7.40059 15.2585 7.37983 13.8281H0V22.0379C0 27.5316 4.46793 32.0015 10 32.0015C15.5228 32.0015 20 27.5406 20 22.0379V13.8281H12.6202C12.5994 15.2516 11.4356 16.4005 10 16.4005Z"
+                                fill="#2B2C2F" />
+                            <path
+                                d="M8.44047 9.09689C8.44047 9.23641 8.44023 13.7962 8.44095 13.8293C8.4617 14.6697 9.15181 15.3442 10.0001 15.3442C10.8612 15.3442 11.5597 14.6485 11.5597 13.7903C11.5597 13.7161 11.5597 9.16677 11.5597 9.09689C11.5597 8.24031 10.8631 7.54297 10.0001 7.54297C9.13869 7.54297 8.44047 8.23865 8.44047 9.09689Z"
+                                fill="#2B2C2F" />
+                        </svg>
+                    </div>
+                    <p class="mouse-paragraph">See mouse controls</p>
+                </div>
+
+                <div id="mouse-overlay-container" class="mouse-overlay-container">
+                    <div id="mouse-overlay" class="mouse-overlay">
+                        <div class="cursor" id="back-mouse">
+                            <svg width="8" height="12" viewBox="0 0 8 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M2.29647 5.9999L7.35676 1.46213C7.4452 1.38755 7.51628 1.29459 7.56503 1.18975C7.61379 1.08491 7.63905 0.97071 7.63905 0.855116C7.63905 0.739522 7.61379 0.62532 7.56503 0.520479C7.51628 0.415638 7.4452 0.322684 7.35676 0.248102C7.16881 0.0867641 6.92918 -0.00195313 6.68133 -0.00195313C6.43349 -0.00195313 6.19385 0.0867641 6.00591 0.248102L0.278296 5.39558C0.193453 5.46821 0.124852 5.55784 0.0769469 5.65865C0.0290419 5.75947 0.00290351 5.86922 0.000228412 5.98077C-0.00244668 6.09233 0.0184014 6.20321 0.0614192 6.3062C0.104437 6.40918 0.168663 6.50199 0.249928 6.57859L6.0005 11.7517C6.18857 11.9128 6.42816 12.0013 6.67593 12.0013C6.9237 12.0013 7.16329 11.9128 7.35135 11.7517C7.4398 11.6771 7.51087 11.5842 7.55963 11.4793C7.60839 11.3745 7.63364 11.2603 7.63364 11.1447C7.63364 11.0291 7.60839 10.9149 7.55963 10.81C7.51087 10.7052 7.4398 10.6123 7.35135 10.5377L2.29647 5.9999Z"
+                                    fill="#2B2C2F" />
+                            </svg>
+                            <p>Back</p>
+                        </div>
+                        <div class="mouse-controls">
+                            <div class="mouse-row">
+                                <h1>Mouse controls</h1>
+                            </div>
+                            <div class="mouse-row">
+                                <svg width="39" height="62" viewBox="0 0 39 62" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M14.3897 17.7383C14.3897 15.2889 16.128 13.2311 18.4655 12.7509V0C8.17659 0.535769 0 9.01723 0 19.4022C0 19.4726 0 24.8349 0 24.9049H14.3897V17.7383Z"
+                                        fill="#006CBB" />
+                                    <path
+                                        d="M20.5347 0V12.7509C22.8721 13.2306 24.6104 15.2889 24.6104 17.7383V24.9045H39.0002C39.0002 24.8345 39.0002 19.4721 39.0002 19.4017C39.0002 9.01723 30.8231 0.535769 20.5347 0Z"
+                                        fill="#2B2C2F" />
+                                    <path
+                                        d="M19.5 31.02C16.7146 31.02 14.4311 28.7931 14.3907 26.0039H0V42.013C0 52.7256 8.71246 61.4421 19.5 61.4421C30.2694 61.4421 39 52.7432 39 42.013V26.0039H24.6093C24.5689 28.7796 22.2993 31.02 19.5 31.02Z"
+                                        fill="#2B2C2F" />
+                                    <path
+                                        d="M16.4586 17.7372C16.4586 18.0092 16.4581 26.9009 16.4595 26.9653C16.5 28.6041 17.8457 29.9194 19.4998 29.9194C21.179 29.9194 22.541 28.5629 22.541 26.8893C22.541 26.7447 22.541 17.8734 22.541 17.7372C22.541 16.0668 21.1827 14.707 19.4998 14.707C17.8201 14.707 16.4586 16.0636 16.4586 17.7372Z"
+                                        fill="#2B2C2F" />
+                                </svg>
+                                <p>Left Click and drag to rotate</p>
+                            </div>
+                            <div class="mouse-row">
+                                <svg width="39" height="62" viewBox="0 0 39 62" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M14.3897 17.7383C14.3897 15.2889 16.128 13.2311 18.4655 12.7509V0C8.17659 0.535769 0 9.01723 0 19.4022C0 19.4726 0 24.8349 0 24.9049H14.3897V17.7383Z"
+                                        fill="#2B2C2F" />
+                                    <path
+                                        d="M20.5347 0V12.7509C22.8721 13.2306 24.6104 15.2889 24.6104 17.7383V24.9045H39.0002C39.0002 24.8345 39.0002 19.4721 39.0002 19.4017C39.0002 9.01723 30.8231 0.535769 20.5347 0Z"
+                                        fill="#2B2C2F" />
+                                    <path
+                                        d="M19.5 31.02C16.7146 31.02 14.4311 28.7931 14.3907 26.0039H0V42.013C0 52.7256 8.71246 61.4421 19.5 61.4421C30.2694 61.4421 39 52.7432 39 42.013V26.0039H24.6093C24.5689 28.7796 22.2993 31.02 19.5 31.02Z"
+                                        fill="#2B2C2F" />
+                                    <path
+                                        d="M16.4586 17.7372C16.4586 18.0092 16.4581 26.9009 16.4595 26.9653C16.5 28.6041 17.8457 29.9194 19.4998 29.9194C21.179 29.9194 22.541 28.5629 22.541 26.8893C22.541 26.7447 22.541 17.8734 22.541 17.7372C22.541 16.0668 21.1827 14.707 19.4998 14.707C17.8201 14.707 16.4586 16.0636 16.4586 17.7372Z"
+                                        fill="#006CBB" />
+                                </svg>
+                                <p>Scroll to zoom in and zoom out</p>
+                            </div>
+                            <div class="mouse-row">
+                                <svg width="39" height="62" viewBox="0 0 39 62" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M14.3897 17.7383C14.3897 15.2889 16.128 13.2311 18.4655 12.7509V0C8.17659 0.535769 0 9.01723 0 19.4022C0 19.4726 0 24.8349 0 24.9049H14.3897V17.7383Z"
+                                        fill="#2B2C2F" />
+                                    <path
+                                        d="M20.5347 0V12.7509C22.8721 13.2306 24.6104 15.2889 24.6104 17.7383V24.9045H39.0002C39.0002 24.8345 39.0002 19.4721 39.0002 19.4017C39.0002 9.01723 30.8231 0.535769 20.5347 0Z"
+                                        fill="#006CBB" />
+                                    <path
+                                        d="M19.5 31.02C16.7146 31.02 14.4311 28.7931 14.3907 26.0039H0V42.013C0 52.7256 8.71246 61.4421 19.5 61.4421C30.2694 61.4421 39 52.7432 39 42.013V26.0039H24.6093C24.5689 28.7796 22.2993 31.02 19.5 31.02Z"
+                                        fill="#2B2C2F" />
+                                    <path
+                                        d="M16.4586 17.7372C16.4586 18.0092 16.4581 26.9009 16.4595 26.9653C16.5 28.6041 17.8457 29.9194 19.4998 29.9194C21.179 29.9194 22.541 28.5629 22.541 26.8893C22.541 26.7447 22.541 17.8734 22.541 17.7372C22.541 16.0668 21.1827 14.707 19.4998 14.707C17.8201 14.707 16.4586 16.0636 16.4586 17.7372Z"
+                                        fill="#2B2C2F" />
+                                </svg>
+                                <p>Right Click to change camera angle</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end mouse controls -->
+
+            <!-- canvas ring -->
+            <canvas id="mcanvas"></canvas>
+            <!-- end canvas ring -->
+        </div>
+        <!-- end canvas container -->
+
+
+        <!-- ui start -->
+        <div id="ui">
+            <div style="margin-top: 60px;" id="ui-container">
+                <div class="ui-header">
+                    <div id="line"></div>
+                    <h3>Choose your ring style!</h3>
+                    <p class="desc">Use our 3D configurator and choose the perfect ring style that is unique to you.</p>
+                </div>
+
+                <div class="ui-content">
+                    <!-- Choose metal -->
+                    <div class="pick-box">
+                        <div class="pick-box-container">
+                            <div style="margin-top: 40px;" class="choose-metal-type-desc">
+                                <!-- <div id="top-line"></div> -->
+                                <!-- <p style="font-weight: 700;"> Metal </p> -->
+                                <p style="font-weight: 700;"> Choose the metal for your ring </p>
+                            </div>
+                            <div style="margin-left: -9px;" class="btn-container">
+                                <div class="btn-text">
+                                    <button id="button1" class="material" data-category="default"
+                                        data-index="0"></button>
+                                    <p id="btn-text-1" class=" cursor">Yellow Gold</p>
+                                    <div class="dot-metal dot-active"></div>
+                                </div>
+                                <div class="btn-text">
+                                    <button id="button2" class="material" data-category="default"
+                                        data-index="1"></button>
+                                    <p id="btn-text-2" class="cursor">White Gold</p>
+                                    <div class="dot-metal"></div>
+                                </div>
+                                <div class="btn-text">
+                                    <button id="button3" class="material" data-category="default"
+                                        data-index="2"></button>
+                                    <p id="btn-text-3" class="cursor">Rose Gold</p>
+                                    <div class="dot-metal"></div>
+                                </div>
+                                <div class="btn-text">
+                                    <button id="button4" class="material" data-category="default"
+                                        data-index="3"></button>
+                                    <p id="btn-text-4" class="cursor">Sterling Silver</p>
+                                    <div class="dot-metal"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end choose metal -->
+
+                    <!-- Choose gem -->
+                    <div>
+                        <div class="pick-box">
+                            <div id="top-line"></div>
+                            <div class="pick-box-container">
+                                <div class="choose-metal-type-desc choose-gem">
+                                    <!-- <p style="font-weight: 700;"> Gem </p> -->
+                                    <p style="font-weight: 700;"> Choose the gem for your ring </p>
+                                </div>
+                                <div style="margin-left: -13px;" class="btn-container">
+                                    <div class="btn-text">
+                                        <button id="gem-btn1" class="diamond" data-category="diamond"
+                                            data-index="0"></button>
+                                        <p id="btn-gem-1" class="cursor">Diamond</p>
+                                        <div class="dot-gem dot-active"></div>
+                                    </div>
+                                    <div class="btn-text">
+                                        <button id="gem-btn2" class="diamond" data-category="diamond"
+                                            data-index="1"></button>
+                                        <p id="btn-gem-2" class="cursor">Sapphire</p>
+                                        <div class="dot-gem"></div>
+                                    </div>
+                                    <div class="btn-text">
+                                        <button id="gem-btn3" class="diamond" data-category="diamond"
+                                            data-index="2"></button>
+                                        <p id="btn-gem-3" class="cursor">Ruby</p>
+                                        <div class="dot-gem"></div>
+                                    </div>
+                                    <div class="btn-text">
+                                        <button id="gem-btn4" class="diamond" data-category="diamond"
+                                            data-index="3"></button>
+                                        <p id="btn-gem-4" class="cursor">Emerald</p>
+                                        <div class="dot-gem"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end choose gem -->
+
+                    <!-- engraving -->
+                    <div class="pick-box">
+                        <div id="top-line"></div>
+                        <div class="pick-box-container">
+                            <div>
+                                <div class="choose-metal-type-desc">
+                                    <!-- <p style="font-weight: 700;"> Engraving </p> -->
+                                    <p style="font-weight: 700;"> Personalize your ring with engravement </p>
+                                </div>
+                                <div class="choose-metal-type-btns">
+                                    <p class="engraving-label"> Engraving text </p>
+                                    <input type="text" id="engraving-text" name="phone" placeholder="Type here"
+                                        maxlength="15">
+                                    <p class="max-char">*Max number of characters 15 </p>
+                                    <p class="engraving-label"> Choose font for engravement</p>
+                                    <div class="select">
+                                        <select id="font-select">
+                                            <option value="0" selected>Dancing Script</option>
+                                            <option value="1">Inter</option>
+                                            <option value="2">Aboreto</option>
+                                            <option value="3">Montserrat</option>
+                                            <option value="4">Nunito</option>
+                                            <option value="5">Sacramento</option>
+                                            <option value="6">Italianno</option>
+                                            <option value="7">Eagle Lake</option>
+                                            <option value="8">Ovo</option>
+                                            <option value="9">Vidaloka</option>
+                                            <option value="10">Open Sans</option>
+                                        </select>
+                                        <svg width="12" height="8" viewBox="0 0 12 8" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M6.00014 5.34025L1.46237 0.279961C1.38779 0.19152 1.29484 0.120442 1.19 0.0716862C1.08516 0.0229301 0.970954 -0.00232939 0.85536 -0.00232939C0.739766 -0.00232938 0.625564 0.0229301 0.520723 0.0716862C0.415882 0.120442 0.322927 0.19152 0.248345 0.279961C0.0870079 0.467906 -0.00170929 0.707541 -0.00170928 0.955387C-0.00170927 1.20323 0.0870079 1.44287 0.248345 1.63081L5.39583 7.35842C5.46845 7.44327 5.55808 7.51187 5.6589 7.55977C5.75971 7.60768 5.86946 7.63381 5.98102 7.63649C6.09258 7.63917 6.20345 7.61832 6.30644 7.5753C6.40943 7.53228 6.50223 7.46806 6.57883 7.38679L11.7519 1.63622C11.913 1.44815 12.0016 1.20856 12.0016 0.96079C12.0016 0.71302 11.913 0.473432 11.7519 0.285364C11.6774 0.196923 11.5844 0.125845 11.4796 0.0770888C11.3747 0.0283327 11.2605 0.00307368 11.1449 0.00307368C11.0293 0.00307369 10.9151 0.0283327 10.8103 0.0770888C10.7055 0.125845 10.6125 0.196923 10.5379 0.285364L6.00014 5.34025Z"
+                                                fill="#747680" />
+                                        </svg>
+                                    </div>
+                                    <div id="remove-engraving" class="remove-engraving cursor">
+                                        <svg id="remove" width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <rect class="remove" x="10.0283" width="1.82452" height="14.1822"
+                                                rx="0.912261" transform="rotate(45 10.0283 0)" fill="#2B2C2F" />
+                                            <rect class="remove" x="11.123" y="9.85254" width="1.82452" height="13.8664"
+                                                rx="0.912261" transform="rotate(135 11.123 9.85254)" fill="#2B2C2F" />
+                                        </svg>
+                                        <p id="remove-engraving-text">Remove engraving</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end engraving -->
+                </div>
+            </div>
+        </div>
+        <!-- ui end -->
+    </div>
+
+    <!-- <script type="module" src="{{ get_asset_url('/3D-Ring-Webgi/script.js') }}" defer></script>
+    <script src="{{ get_asset_url('/3D-Ring-Webgi/mouseControls.js') }}" defer></script>
+    {{ standard_footer_includes }} -->
+    <script type="module" src="script2.js" defer></script>
+    <script src="mouseControls.js" defer></script>
+</body>
+
+</html>
