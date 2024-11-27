@@ -1,23 +1,16 @@
+
 import {
     ViewerApp, AssetManagerPlugin, addBasePlugins, VariationConfiguratorPlugin, SimpleTextPlugin, Vector3, CameraView, CameraViewPlugin
-} from "https://dist.pixotronics.com/webgi/runtime/bundle-0.9.20.mjs";
+} from "https://dist.pixotronics.com/webgi/runtime/bundle-0.7.9.mjs";
 
-const debounce = (func, delay) => {
-    let timer;
-    return (...args) => {
-        clearTimeout(timer);
-        timer = setTimeout(() => func(...args), delay);
-    };
-};
-
-const applyVariationFromElement = (dotClass, element, type, config, categoryCache, onChange) => {
+const applyVariationFromElement = (dotClass, element, type, config, onChange) => {
     element.addEventListener("click", () => {
-        const category = categoryCache[element.getAttribute("data-category")];
+        const category = config.variations[type].find((cat) => cat.name === element.getAttribute("data-category"));
         const index = parseInt(element.getAttribute("data-index"));
-
         if (dotClass === 'dot-gem') {
             config.applyVariation(config.variations.materials[2], index, "materials");
-        } else {
+        }
+        else {
             config.applyVariation(category, index, type);
             config.applyVariation(config.variations.materials[1], index, "materials");
         }
@@ -26,7 +19,9 @@ const applyVariationFromElement = (dotClass, element, type, config, categoryCach
         if (btnTextContainer) {
             const dotMetal = btnTextContainer.querySelector(`.${dotClass}`);
             if (dotMetal) {
-                document.querySelectorAll(`.${dotClass}`).forEach((sibling) => {
+
+                const siblings = document.querySelectorAll(`.${dotClass}`);
+                siblings.forEach((sibling) => {
                     sibling.classList.remove("dot-active");
                 });
                 dotMetal.classList.add("dot-active");
@@ -34,44 +29,42 @@ const applyVariationFromElement = (dotClass, element, type, config, categoryCach
         }
 
         setTimeout(() => {
-            onChange();
+            onChange(); // Call the onChange function here
         }, 300);
     });
 };
 
+
+
 const setupEventListeners = (config, controls, viewer, onChange) => {
-    const materialElements = document.querySelectorAll(".material");
-    const diamondElements = document.querySelectorAll(".diamond");
+    document.querySelectorAll(".material").forEach((el) => applyVariationFromElement('dot-metal', el, "materials", config, onChange));
+    document.querySelectorAll(".diamond").forEach((el) => applyVariationFromElement('dot-gem', el, "materials", config));
 
-    const categoryCache = {};
-    config.variations.materials.forEach((cat) => {
-        categoryCache[cat.name] = cat;
-    });
+    const pauseButton = document.getElementById('pause-rotation');
+    const startButton = document.getElementById('resume-rotation');
 
-    materialElements.forEach((el) => applyVariationFromElement('dot-metal', el, "materials", config, categoryCache, onChange));
-    diamondElements.forEach((el) => applyVariationFromElement('dot-gem', el, "materials", config, categoryCache, onChange));
-
-    document.getElementById('pause-rotation').addEventListener('click', () => {
+    pauseButton.addEventListener('click', () => {
+        pauseButton.style.display = "none";
+        startButton.style.display = "block";
         controls.autoRotate = false;
-        toggleRotationButtons(false);
     });
 
-    document.getElementById('resume-rotation').addEventListener('click', () => {
+    startButton.addEventListener('click', () => {
+        startButton.style.display = "none";
+        pauseButton.style.display = "block";
         controls.autoRotate = true;
-        toggleRotationButtons(true);
     });
 
-    document.getElementById('zoom-border-minus').addEventListener('click', () => controls.zoomOut(0.5));
-    document.getElementById('zoom-border-plus').addEventListener('click', () => controls.zoomIn(0.5));
+    const zoomMinusButton = document.getElementById('zoom-border-minus');
+    const zoomPlusButton = document.getElementById('zoom-border-plus');
 
-    document.getElementById('snapshot').addEventListener('click', () => {
+    zoomMinusButton.addEventListener('click', () => controls.zoomOut(0.5));
+    zoomPlusButton.addEventListener('click', () => controls.zoomIn(0.5));
+
+    const snapShotButton = document.getElementById('snapshot');
+    snapShotButton.addEventListener('click', () => {
         viewer.fitToView();
     });
-};
-
-const toggleRotationButtons = (isRotating) => {
-    document.getElementById('pause-rotation').style.display = isRotating ? "block" : "none";
-    document.getElementById('resume-rotation').style.display = isRotating ? "none" : "block";
 };
 
 async function setupViewer() {
@@ -79,30 +72,33 @@ async function setupViewer() {
         canvas: document.getElementById("mcanvas"),
     });
 
-    const loader = document.getElementById('loader');
+    const loader = document.getElementById('loader'); //
+
     const manager = await viewer.addPlugin(AssetManagerPlugin);
     const config = await viewer.addPlugin(VariationConfiguratorPlugin);
     const text = await viewer.addPlugin(SimpleTextPlugin);
+    // Add the CameraViewPlugin
     const camViewPlugin = await viewer.addPlugin(CameraViewPlugin);
+
+
+    text.applyToAlphaMap = false;
+    const controls = viewer.scene.activeCamera.controls;
+    controls.autoRotate = true;
 
     await addBasePlugins(viewer);
     viewer.renderer.refreshPipeline();
 
-    await config.importPath("https://rio-assets.s3.eu-west-2.amazonaws.com/config-2.json");
+    await config.importPath("https://rio-us.s3.us-east-1.amazonaws.com/config-2.json");
 
-    const ring = await manager.addFromPath("https://rio-us.s3.us-east-1.amazonaws.com/rio-scene-together.glb", {
-        dracoLoader: true,
-        basisLoader: true,
-    });
+    let ring = await manager.addFromPath("https://rio-us.s3.us-east-1.amazonaws.com/rio-scene-together.glb");
 
-    requestAnimationFrame(() => {
-        loader.style.display = 'none';
-    });
+    setTimeout(() => {
+        document.getElementById('loader').style.display = 'none';
+    }, 400); // Hide the loader after 2 seconds
 
-    const controls = viewer.scene.activeCamera.controls;
-    controls.autoRotate = true;
-
-    const fontStyles = await (await fetch("https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap")).text();
+    console.log(viewer);
+    // manager.addFromPath("https://rio-assets.s3.eu-west-2.amazonaws.com/rio.vjson");
+    const fontStyles = await (await fetch("https://fonts.googleapis.com/css2?family=Aboreto&family=Dancing+Script&family=Eagle+Lake&family=Inter&family=Italianno&family=Luxurious+Script&family=Montserrat&family=Nunito&family=Open+Sans&family=Roboto&family=Sacramento&family=Vidaloka&display=swap")).text()
 
     const state = {
         text: '',
@@ -110,36 +106,51 @@ async function setupViewer() {
         style: fontStyles,
         fontSize: 50,
         textColor: '#36454F',
-    };
+    }
 
-    const fontFamily = ['Dancing Script', 'Inter', 'Aboreto', 'Montserrat', 'Nunito', 'Sacramento'];
+    const fontFamily = ['Dancing Script', 'Inter', 'Aboreto', 'Montserrat', 'Nunito', 'Sacramento', 'Italianno',
+        'Eagle Lake',
+        'Ovo',
+        'Vidaloka',
+        'Open Sans',];
+
 
     const decalObject = viewer.scene.getObjectByName('TxtPlane');
+
+
+
     config.applyVariation(config.variations.materials[0], 0, "materials");
     config.applyVariation(config.variations.materials[1], 0, "materials");
     config.applyVariation(config.variations.materials[2], 0, "materials");
-
-    const input = document.getElementById('engraving-text');
-    const fontSelect = document.getElementById('font-select');
-    const removeEngraving = document.getElementById('remove-engraving');
-
-    const predefinedView = new CameraView();
-    predefinedView.position = new Vector3(-2.3, 5.1, 4.1);
-    predefinedView.up = new Vector3(0, 1, 0);
-    camViewPlugin.camViews.push(predefinedView);
+    var input = document.getElementById('engraving-text');
+    var fontSelect = document.getElementById('font-select');
+    var removeEngraving = document.getElementById('remove-engraving');
 
     input.addEventListener('focus', async () => {
         controls.autoRotate = false;
-        await camViewPlugin.animateToView(predefinedView, 500);
-        toggleRotationButtons(false);
+
+        // Create a new camera view
+        let view = new CameraView();
+        view.position = new Vector3(-2.3, 5.1, 4.1);
+        view.up = new Vector3(0, 1, 0);  // Assuming the up direction is (0,1,0)
+
+        // Add the view to the plugin
+        camViewPlugin.camViews.push(view);
+
+        // Animate the camera to the new view
+        await camViewPlugin.animateToView(view, 500); // 2000 ms is the duration
+        const pauseButton = document.getElementById('pause-rotation');
+        const startButton = document.getElementById('resume-rotation');
+        pauseButton.style.display = "none";
+        startButton.style.display = "block";
     });
 
-    input.addEventListener('input', debounce(() => {
+    input.addEventListener('input', async () => {
         state.text = input.value;
         state.fontFamily = fontFamily[fontSelect.selectedIndex];
         onChange({ last: true });
         removeEngraving.style.display = 'flex';
-    }, 300));
+    });
 
     fontSelect.addEventListener('change', () => {
         state.fontFamily = fontFamily[fontSelect.selectedIndex];
@@ -157,11 +168,15 @@ async function setupViewer() {
 
     function onChange(e) {
         if (e && !e.last) return;
+        // Text is already added in the GLB, so we just need to update.
         text.updateText(decalObject, { ...state });
     }
 
+
     onChange();
     setupEventListeners(config, controls, viewer, onChange);
+    controls.autoRotate = true;
 }
+
 
 setupViewer();

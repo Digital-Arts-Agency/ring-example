@@ -1,7 +1,7 @@
 
 import {
     ViewerApp, AssetManagerPlugin, addBasePlugins, VariationConfiguratorPlugin, SimpleTextPlugin, Vector3, CameraView, CameraViewPlugin
-} from "https://dist.pixotronics.com/webgi/runtime/bundle-0.7.9.mjs";
+} from "https://dist.pixotronics.com/webgi/runtime/bundle-0.9.20.mjs";
 
 const applyVariationFromElement = (dotClass, element, type, config, onChange) => {
     element.addEventListener("click", () => {
